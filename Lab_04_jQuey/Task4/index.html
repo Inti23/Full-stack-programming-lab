@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tabbed Content with Smooth Scroll</title>
+
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        /* Navigation Tabs */
+        .tabs {
+            background: #007bff;
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .tabs button {
+            background: white;
+            border: none;
+            padding: 10px 18px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .tabs button.active {
+            background: #ffc107;
+        }
+
+        /* Content Sections */
+        .tab-content {
+            display: none;
+            padding: 60px 20px;
+            min-height: 500px;
+        }
+
+        #tab1 { background: #f4f4f4; }
+        #tab2 { background: #e9f7ef; }
+        #tab3 { background: #fef9e7; }
+        #tab4 { background: #fdebd0; }
+
+        ul, ol {
+            max-width: 600px;
+            margin: auto;
+            text-align: left;
+        }
+
+        p {
+            max-width: 700px;
+            margin: 10px auto;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<!-- Tabs -->
+<div class="tabs">
+    <button data-target="#tab1" class="active">Home</button>
+    <button data-target="#tab2">About</button>
+    <button data-target="#tab3">Services</button>
+    <button data-target="#tab4">Contact</button>
+</div>
+
+<!-- Home -->
+<div id="tab1" class="tab-content">
+    <h2>Welcome to Our Website</h2>
+    <p>
+        We are dedicated to providing high-quality solutions that help individuals 
+        and businesses grow. Our platform is designed with user experience in mind.
+    </p>
+    <p>
+        Explore our services, learn more about our mission, and feel free to 
+        contact us for any inquiries.
+    </p>
+    <ul>
+        <li>✔ Modern Web Solutions</li>
+        <li>✔ User-Friendly Interfaces</li>
+        <li>✔ Reliable Support</li>
+    </ul>
+</div>
+
+<!-- About -->
+<div id="tab2" class="tab-content">
+    <h2>About Us</h2>
+    <p>
+        Our company was founded with the goal of delivering innovative digital 
+        solutions. We believe in creativity, efficiency, and continuous improvement.
+    </p>
+    <p>
+        Our team consists of skilled developers and designers who are passionate 
+        about building interactive and responsive applications.
+    </p>
+    <p>
+        We focus on modern technologies and best practices to provide excellent results.
+    </p>
+</div>
+
+<!-- Services -->
+<div id="tab3" class="tab-content">
+    <h2>Our Services</h2>
+    <p>We offer a wide range of services including:</p>
+    <ol>
+        <li>Web Development (HTML, CSS, JavaScript, jQuery)</li>
+        <li>Frontend UI/UX Design</li>
+        <li>Interactive Web Applications</li>
+        <li>Responsive Website Design</li>
+    </ol>
+    <p>
+        Our goal is to deliver scalable, secure, and high-performance solutions.
+    </p>
+</div>
+
+<!-- Contact -->
+<div id="tab4" class="tab-content">
+    <h2>Contact Us</h2>
+    <p>If you have any questions or project ideas, feel free to reach out.</p>
+    <p>
+        📧 Email: info@example.com <br>
+        📞 Phone: +92 300 1234567 <br>
+        📍 Location: Lahore, Pakistan
+    </p>
+    <p>
+        We usually respond within 24 hours. We look forward to working with you!
+    </p>
+</div>
+
+<script>
+$(document).ready(function () {
+
+    // Show first tab
+    $("#tab1").show();
+
+    $(".tabs button").click(function () {
+
+        $(".tabs button").removeClass("active");
+        $(this).addClass("active");
+
+        let target = $(this).data("target");
+
+        $(".tab-content").fadeOut(200);
+
+        $(target).delay(200).fadeIn(400);
+
+        // Smooth Scroll
+        $("html, body").animate({
+            scrollTop: $(target).offset().top - 60
+        }, 600);
+
+    });
+
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Async Data Loader</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #141e30, #243b55);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 95%;
+            max-width: 750px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            padding: 35px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+            color: white;
+            animation: fadeIn 0.8s ease;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        #output {
+            margin-top: 20px;
+        }
+
+        .user-card {
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 14px;
+            margin-bottom: 12px;
+            transition: 0.3s ease;
+        }
+
+        .user-card:hover {
+            transform: scale(1.03);
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+        .user-card p {
+            margin: 5px 0;
+        }
+
+        .error {
+            color: #ff6b6b;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .loading {
+            text-align: center;
+            font-weight: 600;
+            color: #4dd0ff;
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>📡 Asynchronous Data Loader</h1>
+    <div id="output" class="loading">Loading data, please wait...</div>
+</div>
+
+<script>
+    function fetchUsers() {
+        return new Promise((resolve, reject) => {
+            let isSuccess = true; // change to false to test rejection
+
+            setTimeout(() => {
+                if (isSuccess) {
+                    const users = [
+                        { id: 1, name: "Intizar Hussain", email: "ali@example.com" },
+                        { id: 2, name: "Hassnain Haider", email: "sara@example.com" },
+                        { id: 3, name: "Hizbullah", email: "usman@example.com" }
+                    ];
+                    resolve(users);
+                } else {
+                    reject("Data loading failed!");
+                }
+            }, 3000);
+        });
+    }
+
+    const output = document.getElementById("output");
+
+    fetchUsers()
+        .then(users => {
+            output.innerHTML = users.map(user => `
+                <div class="user-card">
+                    <p><strong>ID:</strong> ${user.id}</p>
+                    <p><strong>Name:</strong> ${user.name}</p>
+                    <p><strong>Email:</strong> ${user.email}</p>
+                </div>
+            `).join("");
+        })
+        .catch(error => {
+            output.innerHTML = `<p class="error">${error}</p>`;
+        });
+</script>
+
+</body>
+</html>

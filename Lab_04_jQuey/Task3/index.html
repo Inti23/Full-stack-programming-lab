@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interactive Form Validation</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            margin-top: 60px;
+        }
+
+        .form-container {
+            background: white;
+            padding: 25px;
+            width: 350px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        input.error {
+            border: 2px solid red;
+            background-color: #ffe6e6;
+        }
+
+        input.success {
+            border: 2px solid green;
+            background-color: #e6ffe6;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 13px;
+            height: 15px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .success-message {
+            margin-top: 15px;
+            text-align: center;
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="form-container">
+    <h2>Register Form</h2>
+
+    <form id="myForm">
+        <input type="text" id="name" placeholder="Enter Name">
+        <div class="error-message" id="nameError"></div>
+
+        <input type="email" id="email" placeholder="Enter Email">
+        <div class="error-message" id="emailError"></div>
+
+        <input type="password" id="password" placeholder="Enter Password">
+        <div class="error-message" id="passwordError"></div>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <div class="success-message" id="successMessage"></div>
+</div>
+
+<script>
+
+const nameInput = document.getElementById("name");
+const emailInput = document.getElementById("email");
+const passwordInput = document.getElementById("password");
+const form = document.getElementById("myForm");
+
+function validateName() {
+    if (nameInput.value.trim() === "") {
+        setError(nameInput, "Name is required", "nameError");
+        return false;
+    }
+    setSuccess(nameInput, "nameError");
+    return true;
+}
+
+function validateEmail() {
+    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    if (!emailPattern.test(emailInput.value.trim())) {
+        setError(emailInput, "Enter valid email", "emailError");
+        return false;
+    }
+    setSuccess(emailInput, "emailError");
+    return true;
+}
+
+function validatePassword() {
+    if (passwordInput.value.length < 6) {
+        setError(passwordInput, "Password must be 6+ characters", "passwordError");
+        return false;
+    }
+    setSuccess(passwordInput, "passwordError");
+    return true;
+}
+
+function setError(input, message, errorId) {
+    input.classList.add("error");
+    input.classList.remove("success");
+    document.getElementById(errorId).textContent = message;
+}
+
+function setSuccess(input, errorId) {
+    input.classList.remove("error");
+    input.classList.add("success");
+    document.getElementById(errorId).textContent = "";
+}
+
+nameInput.addEventListener("blur", validateName);
+emailInput.addEventListener("blur", validateEmail);
+passwordInput.addEventListener("blur", validatePassword);
+
+form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const isNameValid = validateName();
+    const isEmailValid = validateEmail();
+    const isPasswordValid = validatePassword();
+
+    if (isNameValid && isEmailValid && isPasswordValid) {
+        document.getElementById("successMessage").textContent =
+            "Form submitted successfully!";
+        form.reset();
+        nameInput.classList.remove("success");
+        emailInput.classList.remove("success");
+        passwordInput.classList.remove("success");
+    } else {
+        document.getElementById("successMessage").textContent = "";
+    }
+});
+
+</script>
+
+</body>
+</html>
