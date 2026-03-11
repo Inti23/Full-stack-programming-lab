@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shopping Cart - HotSpring Portable Spas</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+.cart-table { width:100%; border-collapse:collapse; }
+.cart-table th { background:#f5f5f5; padding:10px 15px; text-align:left; font-family:Montserrat,sans-serif; font-size:11px; text-transform:uppercase; color:#555; border-bottom:2px solid #ddd; }
+.cart-table td { padding:12px 15px; border-bottom:1px solid #eee; vertical-align:middle; font-size:13px; }
+.cart-item-img { width:70px; height:70px; object-fit:contain; background:#f9f9f9; border:1px solid #eee; border-radius:3px; padding:5px; }
+.cart-item-name { color:#2c3e50; font-weight:600; font-size:13px; }
+.cart-item-name a { color:#2c3e50; }
+.cart-item-desc { font-size:12px; color:#777; margin-top:3px; }
+.cart-qty select { padding:5px 8px; border:1px solid #ddd; border-radius:3px; font-size:13px; }
+.cart-remove { color:#c0392b; font-size:12px; cursor:pointer; }
+.cart-remove:hover { text-decoration:underline; }
+.cart-subtotal { font-weight:700; color:#333; font-family:Montserrat,sans-serif; }
+.cart-summary-box { background:#f9f9f9; border:1px solid #eee; border-radius:4px; padding:20px; text-align:right; margin-top:20px; }
+.cart-summary-box .total-label { font-family:Montserrat,sans-serif; font-size:14px; font-weight:700; color:#2c3e50; }
+.cart-summary-box .total-amount { font-family:Montserrat,sans-serif; font-size:24px; font-weight:800; color:#c0392b; margin:5px 0 15px; }
+.cart-actions { display:flex; justify-content:flex-end; gap:10px; flex-wrap:wrap; }
+.success-banner { background:#d4edda; border:1px solid #c3e6cb; color:#155724; padding:12px 18px; border-radius:4px; margin-bottom:20px; font-size:13px; display:flex; align-items:center; gap:10px; }
+</style>
+</head>
+<body>
+<div id="header-container"></div>
+<div class="page-wrapper">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> <span>›</span> Shopping Cart</div>
+    <h1 class="page-heading">Shopping Cart</h1>
+    <div class="page-content">
+      <h3 style="font-family:Montserrat,sans-serif;font-size:15px;font-weight:700;color:#2c3e50;margin-bottom:15px">Your Shopping Cart</h3>
+      
+      <div class="success-banner">
+        <span>✓</span>
+        <span>The Cabaret 3 Person 41 Jet Hot Tub-110 Volt Plug in <strong>was just added to cart.</strong></span>
+      </div>
+      <p style="font-size:12px;color:#777;margin-bottom:15px">Items added: <a href="#" style="color:#c0392b;font-weight:600">user_name</a> <span style="float:right;color:#555;font-weight:600">Items total</span></p>
+
+      <table class="cart-table" id="cartTable">
+        <thead>
+          <tr>
+            <th style="width:80px">Image</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Delivery</th>
+            <th>Total</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="cartItems"></tbody>
+      </table>
+
+      <div class="cart-summary-box">
+        <div class="total-label">Cart summary (<span id="cartItemCount">2</span> items)</div>
+        <div class="total-amount">Total: $<span id="cartTotal">21.00</span></div>
+        <div class="cart-actions">
+          <a href="category.html" class="btn btn-outline">CONTINUE SHOPPING</a>
+          <a href="checkout.html" class="btn btn-primary">PROCEED TO CHECKOUT</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Customers Also Viewed -->
+    <div class="related-products">
+      <h3>Customers Who Viewed This Item Also</h3>
+      <div class="related-grid">
+        <div class="related-item"><div style="font-size:36px">🛁</div><div class="related-info"><div class="price">$2,549.15</div><p style="font-size:11px">Bosch 22 Cu. Ft Stainless</p></div></div>
+        <div class="related-item"><div style="font-size:36px">🛁</div><div class="related-info"><div class="price">$2,549.15</div><p style="font-size:11px">Bosch 22 Cu. Ft Stainless</p></div></div>
+        <div class="related-item"><div style="font-size:36px">🛁</div><div class="related-info"><div class="price">$2,549.15</div><p style="font-size:11px">Bosch 22 Cu. Ft Stainless</p></div></div>
+        <div class="related-item"><div style="font-size:36px">🛁</div><div class="related-info"><div class="price">$2,549.15</div><p style="font-size:11px">Bosch 22 Cu. Ft Stainless</p></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="partners-container"></div>
+<div id="footer-container"></div>
+<script src="js/components.js"></script>
+<script>
+document.getElementById('header-container').innerHTML = getHeader('');
+document.getElementById('partners-container').innerHTML = getPartnerLogos();
+document.getElementById('footer-container').innerHTML = getFooter();
+
+// Demo cart items
+const demoItems = [
+  { name: 'The Cabaret 3 Person 41 Jet Hot Tub-110 Volt Plug in or 220 Volt Version', desc: '220 V/50 AMP — 4.5KW Heater 110 V/15 AMP — 1KW Heater! convertible to 220 V / 4KW Heater', price: 9, qty: 10 },
+  { name: 'The Cabaret 3 Person 41 Jet Hot Tub-110 Volt Plug in or 220 Volt Version', desc: '220 V/50 AMP — 4.5KW Heater 110 V/15 AMP — 1KW Heater! convertible to 220 V / 4KW Heater', price: 9, qty: 10 }
+];
+
+function renderCart(items) {
+  const tbody = document.getElementById('cartItems');
+  tbody.innerHTML = items.map((item, i) => `
+    <tr id="cart-row-${i}">
+      <td><div style="width:70px;height:70px;background:#f5f5f5;display:flex;align-items:center;justify-content:center;font-size:36px;border:1px solid #eee;border-radius:3px">🛁</div></td>
+      <td>
+        <div class="cart-item-name"><a href="product.html">${item.name}</a></div>
+        <div class="cart-item-desc">${item.desc}</div>
+        <div style="margin-top:5px">
+          <a href="#" onclick="removeItem(${i})" class="cart-remove">Remove</a>
+          <span style="margin:0 8px;color:#ddd">|</span>
+          <a href="product.html" style="font-size:12px;color:#2c3e50">Edit Your Order</a>
+        </div>
+      </td>
+      <td class="cart-qty">
+        <select onchange="updateQty(${i},this.value)">
+          ${[1,2,3,4,5,10,15,20].map(v => `<option value="${v}" ${v===item.qty?'selected':''}>${v}</option>`).join('')}
+        </select>
+      </td>
+      <td style="font-size:12px;color:#777">Standard (7 - 10 business days)</td>
+      <td class="cart-subtotal">$${(item.price * item.qty).toFixed(2)}</td>
+    </tr>
+  `).join('');
+  updateSummary(items);
+}
+
+function updateQty(i, v) {
+  demoItems[i].qty = parseInt(v);
+  renderCart(demoItems);
+}
+
+function removeItem(i) {
+  demoItems.splice(i, 1);
+  renderCart(demoItems);
+  showToast('Item removed from cart.', 'info');
+}
+
+function updateSummary(items) {
+  const total = items.reduce((s, i) => s + (i.price * i.qty), 0);
+  document.getElementById('cartTotal').textContent = total.toFixed(2);
+  document.getElementById('cartItemCount').textContent = items.length;
+}
+
+renderCart(demoItems);
+</script>
+</body>
+</html>

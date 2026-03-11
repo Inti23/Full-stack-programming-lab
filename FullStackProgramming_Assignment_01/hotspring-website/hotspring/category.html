@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Category - HotSpring Portable Spas</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+.category-layout { display: grid; grid-template-columns: 220px 1fr; gap: 25px; }
+.sidebar { background:#fff; border:1px solid #eee; border-radius:4px; padding:20px; }
+.sidebar h3 { font-family:'Montserrat',sans-serif; font-weight:700; font-size:14px; color:#2c3e50; margin-bottom:15px; padding-bottom:8px; border-bottom:2px solid #c0392b; text-transform:uppercase; }
+.products-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; }
+.products-header h2 { font-family:'Montserrat',sans-serif; font-size:18px; font-weight:700; color:#2c3e50; }
+.products-header .meta { font-size:12px; color:#777; display:flex; align-items:center; gap:10px; }
+.products-header select { padding:5px 10px; border:1px solid #ddd; font-size:12px; border-radius:3px; }
+.products-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:15px; }
+@media(max-width:900px){ .category-layout{grid-template-columns:1fr} .sidebar{display:none} .products-grid{grid-template-columns:1fr 1fr} }
+@media(max-width:576px){ .products-grid{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<div id="header-container"></div>
+
+<div class="page-wrapper">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> <span>›</span> Category</div>
+    <div class="category-layout">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="filter-section">
+          <h3>Shopping Options</h3>
+        </div>
+        <div class="filter-section">
+          <h4>Seating Capacity</h4>
+          <ul>
+            <li class="active"><a href="#">2 - 4 People</a></li>
+            <li><a href="#">5 - 7 People</a></li>
+            <li><a href="#">8 People and More</a></li>
+          </ul>
+        </div>
+        <div class="filter-section">
+          <h4>Choose Sizes</h4>
+          <ul>
+            <li><a href="#">5 - 6 Feet Long</a></li>
+            <li><a href="#">6 - 7 Feet Long</a></li>
+            <li><a href="#">7 - 8 Feet Long</a></li>
+            <li><a href="#">8 Feet to Large Size</a></li>
+          </ul>
+        </div>
+        <div class="filter-section">
+          <h4>Spas by Type</h4>
+          <ul>
+            <li><a href="#">Plug and Play 110 Volt</a></li>
+            <li><a href="#">TV - Stereo Spas</a></li>
+            <li><a href="#">Corner Spas</a></li>
+            <li><a href="#">Portable Spas</a></li>
+            <li><a href="#">Deeper Spas</a></li>
+          </ul>
+        </div>
+        <div class="filter-section">
+          <h4>Price Ranges From</h4>
+          <ul>
+            <li><a href="#">Under $3,000</a></li>
+            <li><a href="#">$3,000 to $4,000</a></li>
+            <li><a href="#">$4,000 to $5,000</a></li>
+            <li><a href="#">$5,000 to $6,000</a></li>
+            <li><a href="#">$6,000+</a></li>
+          </ul>
+        </div>
+      </aside>
+
+      <!-- Main Products -->
+      <main>
+        <div class="page-content">
+          <div class="products-header">
+            <h2>Top Product Listing</h2>
+            <div class="meta">
+              <span>6 Item(s)</span>
+              <span>Show: <select onchange="changePerPage(this.value)">
+                <option value="9" selected>9</option>
+                <option value="18">18</option>
+                <option value="36">36</option>
+              </select></span>
+            </div>
+          </div>
+
+          <div class="products-grid" id="productsGrid">
+            <!-- Products injected by JS -->
+          </div>
+        </div>
+
+        <!-- Related / Customers Also Viewed -->
+        <div class="related-products">
+          <h3>Customers Who Viewed This Item Also</h3>
+          <div class="related-grid">
+            <div class="related-item">
+              <div style="width:60px;height:60px;background:#f5f5f5;display:flex;align-items:center;justify-content:center;font-size:24px;border-radius:3px">🛁</div>
+              <div class="related-info">
+                <div class="price">$2,549.15</div>
+                <p>Bosch 22 Cu. Ft Stainless Refrigerator</p>
+                <p style="font-size:10px;color:#aaa">B22CS309NSS</p>
+              </div>
+            </div>
+            <div class="related-item">
+              <div style="width:60px;height:60px;background:#f5f5f5;display:flex;align-items:center;justify-content:center;font-size:24px;border-radius:3px">🛁</div>
+              <div class="related-info">
+                <div class="price">$2,549.15</div>
+                <p>Bosch 22 Cu. Ft Stainless Refrigerator</p>
+                <p style="font-size:10px;color:#aaa">B22CS309NSS</p>
+              </div>
+            </div>
+            <div class="related-item">
+              <div style="width:60px;height:60px;background:#f5f5f5;display:flex;align-items:center;justify-content:center;font-size:24px;border-radius:3px">🛁</div>
+              <div class="related-info">
+                <div class="price">$2,549.15</div>
+                <p>Bosch 22 Cu. Ft Stainless Refrigerator</p>
+                <p style="font-size:10px;color:#aaa">B22CS309NSS</p>
+              </div>
+            </div>
+            <div class="related-item">
+              <div style="width:60px;height:60px;background:#f5f5f5;display:flex;align-items:center;justify-content:center;font-size:24px;border-radius:3px">🛁</div>
+              <div class="related-info">
+                <div class="price">$2,549.15</div>
+                <p>Bosch 22 Cu. Ft Stainless Refrigerator</p>
+                <p style="font-size:10px;color:#aaa">B22CS309NSS</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>
+
+<div id="partners-container"></div>
+<div id="footer-container"></div>
+
+<script src="js/components.js"></script>
+<script>
+document.getElementById('header-container').innerHTML = getHeader('category');
+document.getElementById('partners-container').innerHTML = getPartnerLogos();
+document.getElementById('footer-container').innerHTML = getFooter();
+
+const products = [
+  { name: 'XS SCYBA X SERIES 119', price: 500, desc: 'The goods of our stores are very reliable and durable.', color: '#e8f4f8' },
+  { name: 'XS SCYBA X SERIES 119', price: 500, desc: 'The goods of our stores are very reliable and durable.', color: '#f0f8e8' },
+  { name: 'XS SCYBA X SERIES 119', price: 500, desc: 'The goods of our stores are very reliable and durable.', color: '#e8e8f8' },
+  { name: 'XS SCYBA X SERIES 119', price: 500, desc: 'The goods of our stores are very reliable and durable.', color: '#f8e8e8' },
+  { name: 'XS SCYBA X SERIES 119', price: 500, desc: 'The goods of our stores are very reliable and durable.', color: '#f8f4e8' },
+  { name: 'XS SCYBA X SERIES 119', price: 500, desc: 'The goods of our stores are very reliable and durable.', color: '#e8f8f4' }
+];
+
+const grid = document.getElementById('productsGrid');
+grid.innerHTML = products.map((p,i) => `
+  <div class="product-card">
+    <div class="product-img" style="background:${p.color}">
+      <div style="font-size:64px;text-align:center;padding:20px">🛁</div>
+    </div>
+    <div class="product-info">
+      <div class="product-name">${p.name}</div>
+      <div class="product-desc">${p.desc}</div>
+      <div class="product-price">$${p.price.toFixed(2)}</div>
+      <div class="product-actions">
+        <button class="btn-cart" onclick="addToCart('${p.name}',${p.price},1)">🛒 ADD TO CART</button>
+        <div class="product-links">
+          <a href="#">ADD TO WISH LIST</a>
+          <a href="product.html">MORE DETAILS</a>
+        </div>
+      </div>
+    </div>
+  </div>
+`).join('');
+
+function changePerPage(v) { showToast('Showing ' + v + ' products per page', 'info'); }
+</script>
+</body>
+</html>

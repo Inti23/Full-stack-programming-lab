@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Details - HotSpring Portable Spas</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+.order-info-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:25px; margin-top:20px; }
+.bank-details tr td:first-child { color:#333; font-weight:600; padding-right:15px; padding-bottom:6px; }
+@media(max-width:700px){ .order-info-grid{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<div id="header-container"></div>
+<div class="page-wrapper">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> <span>›</span> <a href="my-account.html">User Account</a> <span>›</span> Order details</div>
+    <h1 class="page-heading">Order Details</h1>
+    <div class="page-content">
+      <p style="font-size:13px;color:#555;margin-bottom:20px">
+        Order <a href="#" style="color:#c0392b;font-weight:600">#304</a> was placed on <a href="#" style="color:#c0392b">December 21th, 2014</a> and currently is on <a href="#" style="color:#c0392b">hold</a>.
+      </p>
+
+      <div style="margin-bottom:25px">
+        <h3 style="font-family:Montserrat,sans-serif;font-size:14px;font-weight:700;color:#2c3e50;padding-bottom:8px;border-bottom:2px solid #eee;margin-bottom:12px">Yor Order Details</h3>
+        <table class="data-table">
+          <thead><tr><th>Product</th><th>Quantity</th><th>Total</th></tr></thead>
+          <tbody>
+            <tr><td><a href="product.html" style="color:#c0392b">Five person hottube spa with green light inside</a></td><td>1</td><td>$699.00</td></tr>
+            <tr><td><a href="product.html" style="color:#c0392b">Five person hottube spa with green light inside</a></td><td>1</td><td>$699.00</td></tr>
+            <tr class="order-total-row"><td colspan="2" style="text-align:right"><strong>Cart Subtotal:</strong></td><td><strong>$1400.00</strong></td></tr>
+            <tr class="order-total-row"><td colspan="2" style="text-align:right"><strong>Shipping:</strong></td><td>Free Shippment</td></tr>
+            <tr class="order-total-row"><td colspan="2" style="text-align:right"><strong>Payment method:</strong></td><td>Direct Bank Transfer</td></tr>
+            <tr class="order-total-row"><td colspan="2" style="text-align:right"><strong>Total with shipping:</strong></td><td><strong style="color:#c0392b">$1400.00</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div style="margin-bottom:25px">
+        <h3 style="font-family:Montserrat,sans-serif;font-size:14px;font-weight:700;color:#2c3e50;padding-bottom:8px;border-bottom:2px solid #eee;margin-bottom:12px">Yor Bank details</h3>
+        <table style="font-size:13px;color:#555">
+          <tr><td style="padding-right:20px;padding-bottom:6px"><strong>Bank :</strong></td><td>Your Bank Name</td></tr>
+          <tr><td style="padding-right:20px;padding-bottom:6px"><strong>Acc# :</strong></td><td>December 21 2014</td></tr>
+          <tr><td style="padding-right:20px;padding-bottom:6px"><strong>BIC :</strong></td><td>$2500</td></tr>
+        </table>
+      </div>
+
+      <div class="order-info-grid">
+        <div class="address-card">
+          <h4>Customer details</h4>
+          <p><strong>Customer Name</strong>&nbsp; Farrukh Javaid</p>
+          <p><strong>Email</strong>&nbsp; email@hotubdirect.com</p>
+          <p><strong>Phone</strong>&nbsp; 0888 7578 787</p>
+        </div>
+        <div class="address-card">
+          <h4>Billing address</h4>
+          <p>Farrukh Javaid<br>Hottub Spas<br>Plot 10 Tech Society<br>California, CA 20112<br>United State</p>
+        </div>
+        <div class="address-card">
+          <h4>Shipping address</h4>
+          <p>Farrukh Javaid<br>Hottub Spas<br>Plot 10 Tech Society<br>California, CA 20112<br>United State</p>
+        </div>
+      </div>
+
+      <div style="margin-top:20px">
+        <a href="my-account.html" class="btn btn-secondary">← Back to Account</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="partners-container"></div>
+<div id="footer-container"></div>
+<script src="js/components.js"></script>
+<script>
+document.getElementById('header-container').innerHTML = getHeader('');
+document.getElementById('partners-container').innerHTML = getPartnerLogos();
+document.getElementById('footer-container').innerHTML = getFooter();
+</script>
+</body>
+</html>

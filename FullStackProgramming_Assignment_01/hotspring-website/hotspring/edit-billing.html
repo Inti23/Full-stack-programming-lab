@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edit Billing Address - HotSpring Portable Spas</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="header-container"></div>
+<div class="page-wrapper">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> <span>›</span> <a href="my-account.html">User Account</a> <span>›</span> My Account</div>
+    <h1 class="page-heading">Edit Billing Address</h1>
+    <div class="page-content">
+      <p style="font-size:13px;color:#777;margin-bottom:5px">Please fill the form bellow to update your Profile details.</p>
+      <p style="font-size:12px;color:#c0392b;margin-bottom:20px">*Required Fields</p>
+      <form id="billingForm" novalidate>
+        <div class="form-group"><label>First Name <span class="req">*</span></label><input type="text" id="bFirst" value="Farrukh"><div class="form-error">Required</div></div>
+        <div class="form-group"><label>Last Name <span class="req">*</span></label><input type="text" id="bLast" value="Javaid"><div class="form-error">Required</div></div>
+        <div class="form-group"><label>Email <span class="req">*</span></label><input type="email" id="bEmail" value="email@hotubdirect.com"><div class="form-error">Valid email required</div></div>
+        <div class="form-group"><label>Phone <span class="req">*</span></label><input type="tel" id="bPhone" value="0888 7578 787"><div class="form-error">Required</div></div>
+        <div class="form-group"><label>City <span class="req">*</span></label><input type="text" id="bCity" value="California"><div class="form-error">Required</div></div>
+        <div class="form-group"><label>State <span class="req">*</span></label><input type="text" id="bState" value="CA"><div class="form-error">Required</div></div>
+        <div class="form-group"><label>Zip Code <span class="req">*</span></label><input type="text" id="bZip" value="20112"><div class="form-error">Required</div></div>
+        <div class="form-group"><label>Country <span class="req">*</span></label><input type="text" id="bCountry" value="United State"><div class="form-error">Required</div></div>
+        <div style="margin-left:160px;margin-top:10px">
+          <button type="submit" class="btn btn-primary" onclick="handleBilling(event)">UPDATE ADDRESS</button>
+          <a href="my-account.html" style="margin-left:15px;font-size:13px;color:#777">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div id="partners-container"></div>
+<div id="footer-container"></div>
+<script src="js/components.js"></script>
+<script>
+document.getElementById('header-container').innerHTML = getHeader('');
+document.getElementById('partners-container').innerHTML = getPartnerLogos();
+document.getElementById('footer-container').innerHTML = getFooter();
+function handleBilling(e) {
+  e.preventDefault();
+  const fields = ['bFirst','bLast','bCity','bState','bZip','bCountry','bPhone'];
+  let valid = fields.reduce((v,id) => validateField(document.getElementById(id)) && v, true);
+  if (!validateEmail(document.getElementById('bEmail'))) valid = false;
+  if (valid) { showToast('Billing address updated!', 'success'); setTimeout(() => window.location = 'my-account.html', 1200); }
+}
+</script>
+</body>
+</html>

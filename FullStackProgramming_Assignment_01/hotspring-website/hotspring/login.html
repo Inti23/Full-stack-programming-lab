@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - HotSpring Portable Spas</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+.login-grid { display:grid; grid-template-columns:1fr 1fr; gap:30px; }
+.login-divider { width:1px; background:#ddd; margin:0 10px; }
+.new-customer-list { margin:10px 0 20px; }
+.new-customer-list li { padding:4px 0; font-size:13px; color:#555; padding-left:15px; position:relative; }
+.new-customer-list li::before { content:'•'; position:absolute; left:0; color:#c0392b; }
+@media(max-width:700px){ .login-grid{grid-template-columns:1fr} .login-divider{display:none} }
+</style>
+</head>
+<body>
+<div id="header-container"></div>
+
+<div class="page-wrapper">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> <span>›</span> My Account</div>
+    <h1 class="page-heading">Login Or Create Account</h1>
+
+    <div class="page-content">
+      <div class="login-grid">
+        <!-- Login Form -->
+        <div>
+          <h3 class="section-subtitle" style="margin-top:0">User Login Details</h3>
+          <p style="font-size:13px;color:#777;margin-bottom:8px">Please sign in below with your login information.</p>
+          <p style="font-size:12px;color:#c0392b;margin-bottom:15px">*Required Fields</p>
+
+          <form id="loginForm" novalidate>
+            <div class="form-group">
+              <label>Email <span class="req">*</span></label>
+              <input type="email" id="loginEmail" name="email" autocomplete="email">
+              <div class="form-error">Please enter a valid email.</div>
+            </div>
+            <div class="form-group">
+              <label>Password <span class="req">*</span></label>
+              <input type="password" id="loginPassword" name="password" autocomplete="current-password">
+              <div class="form-error">Password is required.</div>
+            </div>
+            <div style="margin:10px 0 15px;margin-left:160px">
+              <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;width:auto">
+                <input type="checkbox" id="rememberMe"> Remember me th next time I visit
+              </label>
+            </div>
+            <div style="display:flex;align-items:center;gap:20px;margin-left:160px">
+              <button type="submit" class="btn btn-primary" onclick="handleLogin(event)">SIGN IN</button>
+              <a href="forgot-password.html" style="font-size:13px;color:#c0392b">Forgot your password?</a>
+            </div>
+          </form>
+        </div>
+
+        <div class="login-divider"></div>
+
+        <!-- New Customer -->
+        <div>
+          <h3 class="section-subtitle" style="margin-top:0">New Customer</h3>
+          <p style="font-size:13px;color:#777;margin-bottom:5px">As a registered Abt.com customer you can:</p>
+          <ul class="new-customer-list">
+            <li>Store billing & shipping information</li>
+            <li>Check your order status</li>
+            <li>Track your delivery status</li>
+            <li>View your order history</li>
+          </ul>
+          <a href="register.html" class="btn btn-primary">CREATE NEW ACCOUNT</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Customers Also Viewed -->
+    <div class="related-products">
+      <h3>Customers Who Viewed This Item Also</h3>
+      <div class="related-grid">
+        <div class="related-item"><div style="font-size:36px">🛁</div><div class="related-info"><div class="price">$2,549.15</div><p style="font-size:11px">Bosch 22 Cu. Ft Stainless</p></div></div>
+        <div class="related-item"><div style="font-size:36px">🛁</div><div class="related-info"><div class="price">$2,549.15</div><p style="font-size:11px">Bosch 22 Cu. Ft Stainless</p></div></div>
+        <div class="related-item"><div style="font-size:36px">🛁</div><div class="related-info"><div class="price">$2,549.15</div><p style="font-size:11px">Bosch 22 Cu. Ft Stainless</p></div></div>
+        <div class="related-item"><div style="font-size:36px">🛁</div><div class="related-info"><div class="price">$2,549.15</div><p style="font-size:11px">Bosch 22 Cu. Ft Stainless</p></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="partners-container"></div>
+<div id="footer-container"></div>
+
+<script src="js/components.js"></script>
+<script>
+document.getElementById('header-container').innerHTML = getHeader('');
+document.getElementById('partners-container').innerHTML = getPartnerLogos();
+document.getElementById('footer-container').innerHTML = getFooter();
+
+function handleLogin(e) {
+  e.preventDefault();
+  const email = document.getElementById('loginEmail');
+  const pass = document.getElementById('loginPassword');
+  let valid = true;
+  if (!validateEmail(email)) valid = false;
+  if (!validateField(pass)) valid = false;
+  if (valid) {
+    showToast('Signing in...', 'info');
+    setTimeout(() => { window.location = 'my-account.html'; }, 1000);
+  }
+}
+</script>
+</body>
+</html>

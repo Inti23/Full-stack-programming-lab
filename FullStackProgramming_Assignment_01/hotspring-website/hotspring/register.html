@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Account - HotSpring Portable Spas</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="header-container"></div>
+
+<div class="page-wrapper">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> <span>›</span> Register</div>
+    <h1 class="page-heading">Create New Account</h1>
+
+    <div class="page-content">
+      <h3 class="section-subtitle" style="margin-top:0">User Account Details</h3>
+      <p style="font-size:13px;color:#777;margin-bottom:5px">To create a new account, please fill in the required information below. Passwords are case sensitive and must be 6 to 20 characters long.</p>
+      <p style="font-size:12px;color:#c0392b;margin-bottom:20px">*Required Fields</p>
+
+      <form id="registerForm" novalidate>
+        <div class="form-group">
+          <label>Email Address <span class="req">*</span></label>
+          <input type="email" id="regEmail" name="email" autocomplete="email">
+          <div class="form-error">Please enter a valid email address.</div>
+        </div>
+        <div class="form-group">
+          <label>Password <span class="req">*</span></label>
+          <input type="password" id="regPassword" name="password" autocomplete="new-password">
+          <div class="form-error">Password must be 6-20 characters.</div>
+        </div>
+        <div class="form-group">
+          <label>Re-enter Password <span class="req">*</span></label>
+          <input type="password" id="regPasswordConfirm" name="password_confirm" autocomplete="new-password">
+          <div class="form-error">Passwords do not match.</div>
+        </div>
+        <div class="form-group">
+          <label>First Name <span class="req">*</span></label>
+          <input type="text" id="regFirstName" name="first_name" autocomplete="given-name">
+          <div class="form-error">First name is required.</div>
+        </div>
+        <div class="form-group">
+          <label>Last Name <span class="req">*</span></label>
+          <input type="text" id="regLastName" name="last_name" autocomplete="family-name">
+          <div class="form-error">Last name is required.</div>
+        </div>
+
+        <div style="margin:15px 0 20px;margin-left:160px">
+          <label style="display:flex;align-items:center;gap:8px;font-size:13px;cursor:pointer;width:auto">
+            <input type="checkbox" id="newsletter"> Yes, I want to receive email about new products and specials!
+          </label>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:20px;margin-left:160px">
+          <button type="submit" class="btn btn-primary" onclick="handleRegister(event)">CREATE ACCOUNT</button>
+          <a href="forgot-password.html" style="font-size:13px;color:#c0392b">Forgot your password?</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div id="partners-container"></div>
+<div id="footer-container"></div>
+
+<script src="js/components.js"></script>
+<script>
+document.getElementById('header-container').innerHTML = getHeader('');
+document.getElementById('partners-container').innerHTML = getPartnerLogos();
+document.getElementById('footer-container').innerHTML = getFooter();
+
+function handleRegister(e) {
+  e.preventDefault();
+  let valid = true;
+  if (!validateEmail(document.getElementById('regEmail'))) valid = false;
+
+  const pass = document.getElementById('regPassword');
+  const passEl = pass.parentNode.querySelector('.form-error');
+  if (pass.value.length < 6 || pass.value.length > 20) {
+    pass.classList.add('error');
+    if (passEl) passEl.classList.add('show');
+    valid = false;
+  } else {
+    pass.classList.remove('error');
+    if (passEl) passEl.classList.remove('show');
+  }
+
+  const conf = document.getElementById('regPasswordConfirm');
+  const confEl = conf.parentNode.querySelector('.form-error');
+  if (conf.value !== pass.value) {
+    conf.classList.add('error');
+    if (confEl) confEl.classList.add('show');
+    valid = false;
+  } else {
+    conf.classList.remove('error');
+    if (confEl) confEl.classList.remove('show');
+  }
+
+  if (!validateField(document.getElementById('regFirstName'))) valid = false;
+  if (!validateField(document.getElementById('regLastName'))) valid = false;
+
+  if (valid) {
+    showToast('Account created successfully!', 'success');
+    setTimeout(() => { window.location = 'my-account.html'; }, 1500);
+  }
+}
+</script>
+</body>
+</html>

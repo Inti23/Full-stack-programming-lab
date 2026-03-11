@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Summary - HotSpring Portable Spas</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+.order-info-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:25px; margin-top:20px; }
+.order-section { margin-bottom:25px; }
+.order-section h3 { font-family:Montserrat,sans-serif; font-size:14px; font-weight:700; color:#2c3e50; padding-bottom:8px; border-bottom:2px solid #eee; margin-bottom:12px; }
+.bank-details { font-size:13px; color:#555; }
+.bank-details tr td:first-child { color:#333; font-weight:600; padding-right:15px; padding-bottom:6px; }
+@media(max-width:700px){ .order-info-grid{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<div id="header-container"></div>
+<div class="page-wrapper">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> <span>›</span> <a href="my-account.html">User Account</a> <span>›</span> Order Summery</div>
+    <h1 class="page-heading">Order Summery</h1>
+    <div class="page-content">
+      <div class="alert alert-success">✓ Thank you. your order has been recieved</div>
+
+      <div class="order-section">
+        <h3>Yor Order Summry</h3>
+        <table style="font-size:13px;color:#555">
+          <tr><td style="padding-right:20px;padding-bottom:6px"><strong>Order #:</strong></td><td>0303</td></tr>
+          <tr><td style="padding-right:20px;padding-bottom:6px"><strong>Date:</strong></td><td>December 21 2014</td></tr>
+          <tr><td style="padding-right:20px;padding-bottom:6px"><strong>Total:</strong></td><td>1 x $2500 = $2500</td></tr>
+        </table>
+        <p style="font-size:13px;color:#555;margin-top:12px;background:#fffbf0;padding:12px;border:1px solid #ffd;border-radius:3px">
+          Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order wont be shipped until the funds have cleared in our account.
+        </p>
+      </div>
+
+      <div class="order-section">
+        <h3>Yor Order Details</h3>
+        <table class="data-table">
+          <thead><tr><th>Product</th><th>Quantity</th><th>Total</th></tr></thead>
+          <tbody>
+            <tr><td><a href="product.html" style="color:#c0392b">Five person hottube spa with green light inside</a></td><td>1</td><td>$699.00</td></tr>
+            <tr><td><a href="product.html" style="color:#c0392b">Five person hottube spa with green light inside</a></td><td>1</td><td>$699.00</td></tr>
+            <tr class="order-total-row"><td colspan="2" style="text-align:right"><strong>Cart Subtotal:</strong></td><td><strong>$1400.00</strong></td></tr>
+            <tr class="order-total-row"><td colspan="2" style="text-align:right"><strong>Shipping:</strong></td><td>Free Shippment</td></tr>
+            <tr class="order-total-row"><td colspan="2" style="text-align:right"><strong>Payment method:</strong></td><td>Direct Bank Transfer</td></tr>
+            <tr class="order-total-row"><td colspan="2" style="text-align:right"><strong>Total with shipping:</strong></td><td><strong style="color:#c0392b">$1400.00</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="order-section">
+        <h3>Yor Bank details</h3>
+        <table class="bank-details">
+          <tr><td>Bank :</td><td>Your Bank Name</td></tr>
+          <tr><td>Acc# :</td><td>2014 2545 4524 5654</td></tr>
+          <tr><td>BIC :</td><td>012478 541245641212</td></tr>
+        </table>
+      </div>
+
+      <div class="order-info-grid">
+        <div class="address-card">
+          <h4>Customer details</h4>
+          <p><strong>Customer Name</strong> Farrukh Javaid</p>
+          <p><strong>Email</strong> email@hotubdirect.com</p>
+          <p><strong>Phone</strong> 0888 7578 767</p>
+        </div>
+        <div class="address-card">
+          <h4>Billing address</h4>
+          <p>Farrukh Javaid<br>Hottub Spas<br>Plot 10 Tech Society<br>California, CA 20112<br>United State</p>
+        </div>
+        <div class="address-card">
+          <h4>Shipping address</h4>
+          <p>Farrukh Javaid<br>Hottub Spas<br>Plot 10 Tech Society<br>California, CA 20112<br>United State</p>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:25px">
+        <a href="index.html" class="btn btn-primary">Continue Shopping</a>
+        <a href="my-account.html" class="btn btn-secondary" style="margin-left:10px">View My Account</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="partners-container"></div>
+<div id="footer-container"></div>
+<script src="js/components.js"></script>
+<script>
+document.getElementById('header-container').innerHTML = getHeader('');
+document.getElementById('partners-container').innerHTML = getPartnerLogos();
+document.getElementById('footer-container').innerHTML = getFooter();
+</script>
+</body>
+</html>
