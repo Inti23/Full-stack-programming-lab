@@ -1,0 +1,23 @@
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; margin-top: 3rem; }
+.about-text { color: var(--muted); line-height: 1.9; margin-bottom: 1.5rem; }
+
+.stat-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; margin-top: 2rem; }
+.stat-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; text-align: center; }
+.stat-num { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 900; color: var(--accent); }
+.stat-label { color: var(--muted); font-size: 0.8rem; letter-spacing: 0.05em; margin-top: 4px; }
+
+.timeline { list-style: none; position: relative; padding-left: 1.5rem; }
+.timeline::before { content:''; position:absolute; left:0; top:0; bottom:0; width:2px; background: var(--border); }
+.timeline li { position: relative; padding-bottom: 2rem; }
+.timeline li::before {
+  content:''; position:absolute; left:-1.85rem; top:6px;
+  width:10px; height:10px; border-radius:50%;
+  background: var(--accent); border: 2px solid var(--bg);
+}
+.timeline-year { font-size: 0.75rem; color: var(--accent); font-weight: 500; margin-bottom: 4px; }
+.timeline li h4 { font-size: 0.95rem; font-weight: 500; margin-bottom: 4px; }
+.timeline li p { color: var(--muted); font-size: 0.85rem; line-height: 1.6; }
+
+@media (max-width: 768px) {
+  .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+}
