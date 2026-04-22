@@ -1,0 +1,36 @@
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: var(--nav-h);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 3rem;
+  background: rgba(12,12,15,0.85);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem; font-weight: 900;
+  color: var(--accent); letter-spacing: -0.5px;
+  text-decoration: none;
+}
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  text-decoration: none; color: var(--muted);
+  font-size: 0.9rem; font-weight: 500; letter-spacing: 0.03em;
+  transition: color 0.2s; padding: 4px 0;
+  border-bottom: 2px solid transparent;
+}
+.nav-links a.active,
+.nav-links a:hover { color: var(--text); border-bottom-color: var(--accent); }
+
+.cart-badge {
+  background: var(--accent2); color: #fff;
+  font-size: 0.75rem; font-weight: 600; border-radius: 100px;
+  padding: 4px 10px; display: flex; align-items: center; gap: 5px;
+  animation: popIn 0.2s ease;
+}
+@keyframes popIn { from { transform: scale(0.7); opacity:0; } to { transform: scale(1); opacity:1; } }
+
+@media (max-width: 768px) {
+  .navbar { padding: 0 1.5rem; }
+}

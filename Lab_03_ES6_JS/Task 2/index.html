@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Modern Shopping Cart</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .cart-container {
+            width: 95%;
+            max-width: 750px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            padding: 35px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+            color: white;
+            animation: fadeIn 0.8s ease;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .info-box {
+            background: rgba(255, 255, 255, 0.12);
+            padding: 15px;
+            border-radius: 14px;
+            margin-bottom: 12px;
+            font-size: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .info-box strong {
+            color: #4dd0ff;
+        }
+
+        .cart-list {
+            margin-top: 25px;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 14px;
+            border-radius: 14px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            transition: 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: scale(1.03);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .status {
+            color: #4ade80;
+            font-weight: 600;
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="cart-container">
+    <h1>🛒 Online Shopping Cart</h1>
+
+    <div id="summary"></div>
+    <div id="cartList" class="cart-list"></div>
+</div>
+
+<script>
+    // Store products in array
+    let cart = [];
+
+    // Rest Operator
+    function addToCart(...items) {
+        cart.push(...items);
+    }
+
+    // Add products
+    addToCart("Laptop", "Mouse", "Keyboard", "Headphones");
+
+    // Spread Operator to clone cart
+    const clonedCart = [...cart];
+
+    // Array Destructuring
+    const [firstProduct, ...remainingProducts] = clonedCart;
+
+    // Display Summary
+    const summary = document.getElementById("summary");
+    summary.innerHTML = `
+        <div class="info-box"><strong>Total Items</strong> ${clonedCart.length}</div>
+        <div class="info-box"><strong>First Item</strong> ${firstProduct}</div>
+        <div class="info-box"><strong>Updated Cart</strong> ${clonedCart.join(", ")}</div>
+    `;
+
+    // Display Cart Products dynamically
+    const cartList = document.getElementById("cartList");
+    cartList.innerHTML = clonedCart.map(item => `
+        <div class="product-card">
+            <span>${item}</span>
+            <span class="status">In Cart</span>
+        </div>
+    `).join("");
+</script>
+
+</body>
+</html>

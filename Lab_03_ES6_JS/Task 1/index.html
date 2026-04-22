@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Management System</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: linear-gradient(135deg, #f0f4f8, #d9e4ec);
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 30px;
+    }
+
+    #student-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 0 10px;
+    }
+
+    .student-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      padding: 20px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .student-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    }
+
+    .student-card h2 {
+      margin: 0 0 10px;
+      color: #0078D7;
+    }
+
+    .student-card p {
+      margin: 5px 0;
+      color: #555;
+    }
+
+    .courses {
+      margin-top: 10px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .courses li {
+      background: #0078D7;
+      color: #fff;
+      padding: 5px 10px;
+      border-radius: 5px;
+      display: inline-block;
+      margin: 3px;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎓 Student Management System</h1>
+  <div id="student-list"></div>
+
+  <script>
+    // Modern ES6 Student class
+    class Student {
+      constructor(id, name, semester, courses) {
+        this.id = id;
+        this.name = name;
+        this.semester = semester;
+        this.courses = courses;
+      }
+
+      // Method to return HTML card
+      getCard() {
+        return `
+          <div class="student-card">
+            <h2>${this.name} <small>(ID: ${this.id})</small></h2>
+            <p><strong>Semester:</strong> ${this.semester}</p>
+            <p><strong>Courses:</strong></p>
+            <ul class="courses">
+              ${this.courses.map(course => `<li>${course}</li>`).join("")}
+            </ul>
+          </div>
+        `;
+      }
+    }
+
+    // Create multiple student objects
+    const student1 = new Student(101, "Intizar Hussain", "Spring 2026", ["Math", "Physics", "English"]);
+    const student2 = new Student(102, "Hizbullah", "Spring 2026", ["Biology", "Chemistry", "Urdu"]);
+    const student3 = new Student(103, "Hassnain Haider", "Spring 2026", ["Computer Science", "Statistics", "Economics"]);
+    const student4 = new Student(104, "Ayesha Malik", "Spring 2026", ["History", "Political Science", "Philosophy"]);
+    const student5 = new Student(105, "Usman Tariq", "Spring 2026", ["Accounting", "Finance", "Business Management"]);
+    const student6 = new Student(106, "Fatima Zahra", "Spring 2026", ["Art", "Design", "Media Studies"]);
+
+    // Store students in an array
+    let students = [student1, student2, student3, student4, student5, student6];
+
+    // Render students dynamically
+    const studentListDiv = document.getElementById("student-list");
+    studentListDiv.innerHTML = students.map(student => student.getCard()).join("");
+  </script>
+</body>
+</html>

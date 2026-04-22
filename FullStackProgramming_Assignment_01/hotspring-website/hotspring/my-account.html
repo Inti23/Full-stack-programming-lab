@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Account - HotSpring Portable Spas</title>
+<link rel="stylesheet" href="css/style.css">
+<style>
+.address-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:15px; }
+@media(max-width:600px){ .address-grid{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+<div id="header-container"></div>
+
+<div class="page-wrapper">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a> <span>›</span> <a href="#">User Account</a> <span>›</span> My Account</div>
+    <h1 class="page-heading">User Profile Details</h1>
+
+    <div class="page-content">
+      <!-- User Profile -->
+      <h3 class="section-subtitle" style="margin-top:0">User profile</h3>
+      <p style="font-size:13px;color:#555;margin-bottom:5px">Hello User name! From your account you can view your recent orders, manage your shipping and billing addresses.</p>
+      <a href="edit-account.html" style="font-size:13px;color:#c0392b">edit your password and account details.</a>
+
+      <!-- Recent Orders -->
+      <h3 class="section-subtitle">Recent Orders</h3>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Order</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Total</th>
+            <th>Options</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="order-details.html" class="order-link">#303</a></td>
+            <td>December 18, 2014</td>
+            <td><span style="color:#f39c12;font-weight:600">On hold</span></td>
+            <td>$699.00</td>
+            <td><a href="order-details.html" class="btn btn-primary" style="padding:6px 15px;font-size:11px">VIEW ORDERS</a></td>
+          </tr>
+          <tr>
+            <td><a href="order-details.html" class="order-link">#307</a></td>
+            <td>December 18, 2014</td>
+            <td><span style="color:#f39c12;font-weight:600">On hold</span></td>
+            <td>$799.00</td>
+            <td><a href="order-details.html" class="btn btn-primary" style="padding:6px 15px;font-size:11px">VIEW ORDERS</a></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Addresses -->
+      <h3 class="section-subtitle">My Addresses</h3>
+      <p style="font-size:13px;color:#777;margin-bottom:10px">The following addressess will be used on the checkout page by default</p>
+
+      <div class="address-grid">
+        <div class="address-card">
+          <h4>Billing address</h4>
+          <p>Farrukh Javaid<br>
+          Hottub Spas<br>
+          Plot 10 Tech Society<br>
+          California, CA 20112<br>
+          United State</p>
+          <a href="edit-billing.html" class="btn btn-primary" style="margin-top:15px;display:inline-block;font-size:11px;padding:7px 15px">EDIT ADRESSES</a>
+        </div>
+        <div class="address-card">
+          <h4>Shipping address</h4>
+          <p>Farrukh Javaid<br>
+          Hottub Spas<br>
+          Plot 10 Tech Society<br>
+          California, CA 20112<br>
+          United State</p>
+          <a href="edit-shipping.html" class="btn btn-primary" style="margin-top:15px;display:inline-block;font-size:11px;padding:7px 15px">EDIT ADRESSES</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="partners-container"></div>
+<div id="footer-container"></div>
+
+<script src="js/components.js"></script>
+<script>
+document.getElementById('header-container').innerHTML = getHeader('');
+document.getElementById('partners-container').innerHTML = getPartnerLogos();
+document.getElementById('footer-container').innerHTML = getFooter();
+</script>
+</body>
+</html>
